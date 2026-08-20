@@ -1,0 +1,34 @@
+! Title: Bloqueio Kwai/Kuaishou
+! Description: Bloqueia o app Kwai e a infraestrutura da Kuaishou (CDN, API, live, pagamentos). Dominios levantados do query log do AdGuard Home + dominios conhecidos da empresa.
+! Homepage: https://github.com/SEU_USUARIO/dns-blocklists
+! Last modified: 2026-08-20
+! Expires: 1 day
+!
+! Sintaxe AdBlock: ||dominio^ bloqueia o dominio e TODOS os subdominios.
+!
+! ---- Observados no query log (app Kwai no Brasil) ----
+||kwai.com^
+||kwai.net^
+||kwai-pro.com^
+||kwaipros.com^
+||kwaipay.app^
+||kwai-pay.com^
+!
+! ---- Infraestrutura Kuaishou (empresa-mae do Kwai) ----
+||kuaishou.com^
+||kuaishou.cn^
+||kuaishouapp.com^
+||kuaishoupay.com^
+||gifshow.com^
+||yximgs.com^
+||kwimgs.com^
+||ksapisrv.com^
+||kwai.app^
+||getkwai.com^
+!
+! ---- Snack Video (mesmo app da Kuaishou em outros mercados) ----
+||snackvideo.com^
+!
+! ---- Ads/telemetria do SDK do Kwai (ja cobertos pelo hagezi pro.plus; redundancia proposital) ----
+||adaether.com^
+||mythad.com^
