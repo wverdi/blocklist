@@ -1,6 +1,6 @@
 ! Title: Bloqueio Kwai/Kuaishou
 ! Description: Bloqueia o app Kwai e a infraestrutura da Kuaishou (CDN, API, live, pagamentos). Dominios levantados do query log do AdGuard Home + dominios conhecidos da empresa.
-! Homepage: https://github.com/SEU_USUARIO/dns-blocklists
+! Homepage: https://github.com/wverdi/blocklist/
 ! Last modified: 2026-08-20
 ! Expires: 1 day
 !
