@@ -1,0 +1,16 @@
+! Title: Conteudo Adulto
+! Description: Complemento do hagezi NSFW - dominios adultos observados no query log do AdGuard Home que passam pelas listas publicas.
+! Homepage: https://github.com/wverdi/blocklist
+! Last modified: 2026-08-21
+! Expires: 1 day
+!
+! Sintaxe AdBlock: ||dominio^ bloqueia o dominio e TODOS os subdominios.
+!
+! ---- Observados no query log ----
+! (cobre tambem files.fatalfans.com e qualquer outro subdominio)
+||fatalfans.com^
+! encurtador/redirect da Fatal Model (usado em links de WhatsApp)
+||fatal.fm^
+!
+! ---- Ja coberto pelo hagezi NSFW (redundancia proposital) ----
+||fatalmodel.com^
