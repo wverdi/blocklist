@@ -25,6 +25,7 @@
 ||ksapisrv.com^
 ||kwai.app^
 ||getkwai.com^
+||inkuai.com^
 !
 ! ---- Snack Video (mesmo app da Kuaishou em outros mercados) ----
 ||snackvideo.com^
