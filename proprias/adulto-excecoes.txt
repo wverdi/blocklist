@@ -1,0 +1,10 @@
+! Dominios que NUNCA podem ser bloqueados na lista de conteudo adulto.
+! Uma linha por dominio, na mesma sintaxe das outras: ||dominio^
+!
+! ATENCAO: a excecao remove a linha exata do arquivo publicado, mas NAO
+! vence uma regra de dominio pai. Se ||exemplo.com^ estiver na lista,
+! excetuar img.exemplo.com nao libera nada - o pai continua bloqueando.
+! O relatorio de cada rodada avisa quando isso acontece, na secao
+! "Excecoes sem efeito". Nesse caso, a saida e' excetuar o proprio pai.
+!
+! (vazio por enquanto)

@@ -1,0 +1,5 @@
+# Mensagem de commit da rodada: e' efemera, nao entra no historico.
+dist/resumo.txt
+
+__pycache__/
+*.pyc

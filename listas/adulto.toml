@@ -1,0 +1,83 @@
+# Lista consolidada de conteudo adulto.
+#
+# Para adicionar uma fonte: acrescente um bloco [[fontes]].
+# Para tirar uma fonte do arquivo publicado sem perder a medicao dela:
+# troque publicar = true por publicar = false (modo observacao).
+
+titulo = "Conteudo Adulto"
+descricao = "Lista consolidada de conteudo adulto: fontes publicas curadas + dominios observados no query log do AdGuard Home."
+homepage = "https://github.com/wverdi/blocklist"
+expires = "1 day"
+licenca = "GPL-3.0"
+
+# Vai para o cabecalho do arquivo publicado: quem assina a URL no AdGuard le
+# o aviso sem precisar abrir o repositorio.
+aviso = """
+Uso livre por qualquer pessoa, sob a GPL-3.0.
+
+SEM GARANTIA DE ESPECIE ALGUMA. Esta lista pode bloquear dominios
+legitimos (falso positivo) e deixar passar conteudo que voce esperava
+que bloqueasse (falso negativo). Ela nao substitui supervisao nem
+constitui controle parental. O uso e por sua conta e risco, e a
+responsabilidade por qualquer consequencia e de quem a utiliza.
+
+Encontrou um dominio bloqueado indevidamente, ou faltando?
+https://github.com/wverdi/blocklist/issues
+"""
+
+saida = "dist/adulto.txt"
+propria = "proprias/adulto.txt"
+excecoes = "proprias/adulto-excecoes.txt"
+
+# Regras de um rotulo so (||xxx^) bloqueiam um dominio de topo inteiro.
+# Desligado por padrao: hoje nenhuma fonte publicada traz esse tipo de regra.
+# So faz diferenca se o oisd for promovido - ele traz ||adult^, ||porn^,
+# ||sex^ e ||xxx^. Se ligar, confira a secao "Regras de TLD inteiro" do
+# relatorio a cada rodada.
+permitir_regra_de_tld = false
+
+[travas]
+# Nao publica se o total variar mais que isto em relacao a rodada anterior.
+variacao_maxima = 0.20
+# Nem se cair abaixo deste piso (medido em 18/09/2026: ~106 mil regras).
+minimo_dominios = 50000
+
+# ---------------------------------------------------------------------------
+# Fontes publicadas
+# ---------------------------------------------------------------------------
+
+[[fontes]]
+nome = "hagezi-nsfw"
+url = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/nsfw.txt"
+licenca = "GPL-3.0"
+publicar = true
+# 74.633 dominios em 18/09/2026, zero redundancia hierarquica.
+
+[[fontes]]
+nome = "stevenblack-porn-only"
+url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn-only/hosts"
+licenca = "MIT"
+publicar = true
+# Atencao ao caminho: alternates/porn/hosts traz junto o hosts unificado
+# (ads/malware, 80 mil dominios fora desta categoria). porn-only nao.
+
+# ---------------------------------------------------------------------------
+# Fontes em observacao: baixadas e medidas a cada rodada, fora do arquivo.
+# Promova trocando publicar para true depois de olhar o relatorio.
+# ---------------------------------------------------------------------------
+
+[[fontes]]
+nome = "oisd-nsfw"
+url = "https://nsfw.oisd.nl/"
+licenca = "ver https://oisd.nl"
+publicar = false
+# 474 mil dominios, mas a amostragem de 18/09/2026 achou muita coisa fora da
+# categoria (empresas chinesas, sites comerciais aleatorios).
+
+[[fontes]]
+nome = "blocklistproject-porn"
+url = "https://raw.githubusercontent.com/blocklistproject/Lists/master/porn.txt"
+licenca = "Unlicense"
+publicar = false
+# 953 mil dominios, 25 MB, 61% sem corroboracao de nenhuma outra fonte.
+# Muito blog individual (blogspot, tumblr, canalblog).

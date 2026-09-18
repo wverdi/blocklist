@@ -1,0 +1,60 @@
+name: atualizar-listas
+
+on:
+  schedule:
+    # 09:00 UTC = 06:00 em Brasilia. O agendamento do Actions nao e' pontual:
+    # atrasos de minutos (as vezes horas) sao normais e irrelevantes aqui,
+    # porque o AdGuard so rele os filtros a cada 24 h.
+    - cron: "0 9 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atualizar-listas
+  cancel-in-progress: false
+
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          # tomllib exige 3.11+. O gerador nao tem nenhuma dependencia
+          # externa, entao nao existe passo de pip install.
+          python-version: "3.12"
+
+      - name: Testes do gerador
+        run: python -m unittest discover -s gerador
+
+      - name: Gerar listas
+        run: python gerador/gerar.py
+
+      - name: Relatorio da rodada
+        if: always()
+        run: |
+          for arquivo in dist/relatorio-*.md; do
+            echo "=============== $arquivo ==============="
+            cat "$arquivo"
+          done
+
+      - name: Publicar se mudou
+        run: |
+          if [ ! -s dist/resumo.txt ]; then
+            echo "Nenhuma lista mudou; nada a commitar."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dist/ estado/
+          if git diff --cached --quiet; then
+            echo "Sem diferenca no indice; nada a commitar."
+            exit 0
+          fi
+          git commit -m "$(cat dist/resumo.txt)"
+          git push

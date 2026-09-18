@@ -1,0 +1,4 @@
+# As listas publicadas sao consumidas por AdGuard e por scripts em Linux,
+# e o gerador roda tanto no Windows (na mao) quanto no Ubuntu (Actions).
+# LF sempre, para que a saida nao dependa de onde a rodada aconteceu.
+* text=auto eol=lf
