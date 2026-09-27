@@ -1,16 +1,16 @@
 # Conteudo Adulto
 
-Rodada de 2026-09-26.
+Rodada de 2026-09-27.
 
-**Publicado:** 116,216 regras (+1,014 desde a rodada anterior).
+**Publicado:** 115,778 regras (-438 desde a rodada anterior).
 
 ## Fontes
 
 | fonte | dominios | descartadas | papel |
 |---|---:|---:|---|
 | blocklistproject-porn | 953,393 | 0 | observacao |
-| hagezi-nsfw | 85,219 | 0 | publicada |
-| oisd-nsfw | 506,907 | 4 | observacao |
+| hagezi-nsfw | 84,767 | 0 | publicada |
+| oisd-nsfw | 498,932 | 4 | observacao |
 | stevenblack-porn-only | 76,793 | 0 | publicada |
 
 ## Compactacao
